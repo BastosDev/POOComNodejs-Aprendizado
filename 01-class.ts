@@ -64,7 +64,7 @@ const bakery = {
         
 }
 
-console.log(bakery)
+console.log(bakery) 
 console.log(bakery.productNames())
 console.log(bakeryThree.productNamesReturns)
 console.log(bakeryThree.waitingLine)
