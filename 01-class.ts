@@ -4,12 +4,26 @@ type Product = {
 }
 
 class Establishment {
-
+    public waitingLine: number
+     
     constructor (
-        private address: string,
-        private types: string, 
-        private products: Product[]
-        ) {}
+        public address: string,
+        public types: string, 
+        private products: Product[],
+        waitingLine?: number
+        ) {
+            this.waitingLine = waitingLine ?? 10
+        }
+
+        productNamesReturns() {
+            return this.products.map(product => product.name)
+        }
+    reduceWaitingLine() {
+        if (this.waitingLine === 0) {
+            return
+        }
+        this.waitingLine -= 1
+    }
 }
 
 const bakeryThree = new Establishment("Rua dos Laranjeiras, 420 - bloco A", "Alimentação", 
@@ -19,7 +33,7 @@ const bakeryThree = new Establishment("Rua dos Laranjeiras, 420 - bloco A", "Ali
      {name: "leite", value: 5},
       {name: "brigadeiro", value: 2.5},
        {name: "carne moida", value: -10}
-    ])
+    ], 3)
 
 const bakery = {
     address: "Rua dos Laranjeiras, 420 - bloco A",
@@ -39,4 +53,11 @@ const bakery = {
 
 console.log(bakery)
 console.log(bakery.productNames())
-console.log(bakeryThree)
+console.log(bakeryThree.productNamesReturns)
+console.log(bakeryThree.waitingLine)
+bakeryThree.reduceWaitingLine()
+bakeryThree.reduceWaitingLine()
+bakeryThree.reduceWaitingLine()
+bakeryThree.reduceWaitingLine()
+console.log(bakeryThree.address)
+console.log(bakeryThree.waitingLine)
