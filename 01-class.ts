@@ -12,7 +12,7 @@ class Establishment {
         private products: Product[],
         waitingLine?: number
         ) {
-            this.waitingLine = waitingLine ?? this.waiting_Line
+            this.waiting_Line = waitingLine ?? this.waiting_Line
         }
 
         public productNamesReturns() {
@@ -64,7 +64,7 @@ const bakery = {
         
 }
 
-console.log(bakery) 
+console.log(bakery)
 console.log(bakery.productNames())
 console.log(bakeryThree.productNamesReturns)
 console.log(bakeryThree.waitingLine)
