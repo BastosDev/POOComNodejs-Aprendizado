@@ -4,7 +4,7 @@ type Product = {
 }
 
 class Establishment {
-    public waitingLine: number
+    private waiting_Line = 10
      
     constructor (
         public address: string,
@@ -12,17 +12,30 @@ class Establishment {
         private products: Product[],
         waitingLine?: number
         ) {
-            this.waitingLine = waitingLine ?? 10
+            this.waitingLine = waitingLine ?? this.waiting_Line
         }
 
-        productNamesReturns() {
+        public productNamesReturns() {
             return this.products.map(product => product.name)
         }
+
+        get waitingLine() {
+            return this.waiting_Line
+        }
+
+        set waitingLine (line: number) {
+            if (line <= 0) {
+                return
+            }
+
+            this.waiting_Line = line
+        }
+
     reduceWaitingLine() {
-        if (this.waitingLine === 0) {
+        if (this.waiting_Line === 0) {
             return
         }
-        this.waitingLine -= 1
+        this.waiting_Line -= 1
     }
 }
 
@@ -59,5 +72,6 @@ bakeryThree.reduceWaitingLine()
 bakeryThree.reduceWaitingLine()
 bakeryThree.reduceWaitingLine()
 bakeryThree.reduceWaitingLine()
+bakeryThree.waitingLine = 100
 console.log(bakeryThree.address)
 console.log(bakeryThree.waitingLine)
