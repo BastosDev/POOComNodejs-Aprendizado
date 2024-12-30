@@ -6,7 +6,9 @@ type Product = {
 class Establishment {
 
     constructor (
-        private address: string, private types: string, private products: Product[]
+        private address: string,
+        private types: string, 
+        private products: Product[]
         ) {}
 }
 
